@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8">
+<title>Vicious Valet</title>
+<link rel="stylesheet" href="css/viciouscss.css">
+</head>
+<body>
+	<header>
+		<p id="blankbar">.</p>
+		<p id="vv">VICIOUS VALET</p>
+		<div id="masthead">
+			<div id="navbar">
+
+				<ul id="nav-list">
+					<li class="nav-link"><a href="/">Home</a></li>
+					<li class="nav-link"><a target="_blank"
+						href="https://www.carfax.com/company/vehicle-identification-numbers-vins">Vin
+							Decoder</a></li>
+					<li class="nav-link"><a target="_blank"
+						href="http://www.1112.net/lastpage.html">Support</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id=hero></div>
+	</header>
+
+
+
+
+	<form action="/" method="post" class="form">
+		<div>
+			<label><input type="text" name="license"
+				placeholder="license #" id="plate"> </label>
+		</div>
+		<div>
+			<label><input type="text" name="state"
+				placeholder="license state" id="state"> </label>
+		</div>
+		<div>
+			<label> <input type="text" name="color"
+				placeholder="color of car">
+			</label>
+		</div>
+		<div>
+			<label> <input type="text" name="make"
+				placeholder="make of car">
+			</label>
+		</div>
+		<div>
+			<label> <input type="text" name="model"
+				placeholder="model of car">
+			</label>
+		</div>
+		<div>
+			<label> <input type="text" name="name"
+				placeholder="client's name">
+			</label>
+		</div>
+		<div>
+			<label> <input type="text" name="phone"
+				placeholder="client's phone #">
+			</label>
+		</div>
+		<button id="addcar">Add Car</button>
+
+
+	</form>
+	<div class="results"
+		<p id="full">The lot is full: {{ lot.isLotFull }}</p>
+		<p id="number">The Number of cars in the lot: {{ lot.carList.size
+			}}</p>
+	</div>
+	<table class="page-row" id="travel-table">
+		<thead>
+			<tr>
+				<th>License</th>
+				<th>State</th>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Color</th>
+				<th>Name</th>
+				<th>Phone</th>
+				<th>Remove</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#lot.carList}}
+			<tr>
+				<td>{{ license }}</td>
+				<td>{{ state }}</td>
+				<td>{{ make }}</td>
+				<td>{{ model }}</td>
+				<td>{{ color }}</td>
+				<td>{{ name }}</td>
+				<td>{{ phone }}</td>
+				<td>
+					<form method="post" action="/remove">
+						<input type="hidden" name="carIndex" value="{{ -index }}">
+
+						<button>Remove From Lot</button>
+
+					</form>
+				</td>
+			</tr>
+			{{/lot.carList}}
+		</tbody>
+	</table>
+	</div>
+</body>
+</html>
